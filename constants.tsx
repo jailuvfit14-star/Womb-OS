@@ -29,11 +29,36 @@ export const ROOT_WOUNDS = [
 ];
 
 export const SOIL_STATE_DETAILS = {
-  [SoilState.PARCHED]: { icon: '🏜️', label: 'The Drought', color: '#D2B48C', guidance: 'Hydrate with minerals, oil massage, grounding, rest.' },
-  [SoilState.FLOODED]: { icon: '🌊', label: 'The Overwhelm', color: '#7FB3D5', guidance: 'Boundaries. Choose only 3 tasks today. Cold water therapy.' },
-  [SoilState.FROZEN]: { icon: '❄️', label: 'The Shutdown', color: '#AED6F1', guidance: 'Somatic shaking, humming, one micro-movement.' },
-  [SoilState.DEPLETED]: { icon: '🥀', label: 'The Exhaustion', color: '#95A5A6', guidance: 'Radical rest (72 hrs minimum). Ask for help.' },
-  [SoilState.NUTRIENT_DENSE]: { icon: '🌿', label: 'The Soft State', color: '#F1C40F', guidance: 'Maintain through your 8 Pillars. You\'re in flow.' },
+  [SoilState.PARCHED]: { 
+    icon: '🏜️', 
+    label: 'PARCHED (The Drought)', 
+    color: '#D2B48C', 
+    guidance: 'Numbness, apathy, dissociation. Hydrate with minerals, oil massage, grounding, rest.' 
+  },
+  [SoilState.FLOODED]: { 
+    icon: '🌊', 
+    label: 'FLOODED (The Overwhelm)', 
+    color: '#7FB3D5', 
+    guidance: 'Anxiety, racing heart, everything urgent. Boundaries. Choose only 3 tasks today. Cold water therapy.' 
+  },
+  [SoilState.FROZEN]: { 
+    icon: '❄️', 
+    label: 'FROZEN (The Shutdown)', 
+    color: '#AED6F1', 
+    guidance: 'Paralysis, can\'t move. Somatic shaking, humming, one micro-movement.' 
+  },
+  [SoilState.DEPLETED]: { 
+    icon: '🥀', 
+    label: 'DEPLETED (The Exhaustion)', 
+    color: '#95A5A6', 
+    guidance: 'Bone-deep weariness, compassion fatigue. Radical rest (72 hrs minimum). Ask for help.' 
+  },
+  [SoilState.NUTRIENT_DENSE]: { 
+    icon: '🌿', 
+    label: 'NUTRIENT-DENSE (The Soft State)', 
+    color: '#F1C40F', 
+    guidance: 'Clarity, presence, flow, \'I have enough time\'. Maintain through your 8 Pillars. You\'re in flow.' 
+  },
 };
 
 export const ARCHETYPE_DETAILS = {
