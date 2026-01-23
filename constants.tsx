@@ -1,13 +1,13 @@
 
-import React from 'react';
-import { Archetype, SoilState } from './types';
+import { Archetype, SoilState, SomaticPractice, HerbalProtocol } from './types';
 
 export const COLORS = {
   GOLD: '#D4AF37',
-  DUSTY_PINK: '#D4A5A5',
+  DUSTY_ROSE: '#D4A5A5',
   CREAM: '#F5F5DC',
-  DEEP_BROWN: '#3E2723',
-  SOFT_SAGE: '#A8B5A2',
+  SAGE: '#A8B5A2',
+  DEEP_SAGE: '#4A5D4E',
+  SLATE: '#2C3E50',
 };
 
 export const ROOT_WOUNDS = [
@@ -31,33 +31,33 @@ export const ROOT_WOUNDS = [
 export const SOIL_STATE_DETAILS = {
   [SoilState.PARCHED]: { 
     icon: '🏜️', 
-    label: 'PARCHED (The Drought)', 
+    label: 'PARCHED', 
     color: '#D2B48C', 
-    guidance: 'Numbness, apathy, dissociation. Hydrate with minerals, oil massage, grounding, rest.' 
+    guidance: 'Numbness, apathy. Ground with minerals and oil.' 
   },
   [SoilState.FLOODED]: { 
     icon: '🌊', 
-    label: 'FLOODED (The Overwhelm)', 
+    label: 'FLOODED', 
     color: '#7FB3D5', 
-    guidance: 'Anxiety, racing heart, everything urgent. Boundaries. Choose only 3 tasks today. Cold water therapy.' 
+    guidance: 'Anxiety, overwhelm. Limit tasks. Cold water.' 
   },
   [SoilState.FROZEN]: { 
     icon: '❄️', 
-    label: 'FROZEN (The Shutdown)', 
+    label: 'FROZEN', 
     color: '#AED6F1', 
-    guidance: 'Paralysis, can\'t move. Somatic shaking, humming, one micro-movement.' 
+    guidance: 'Paralysis. Somatic shaking, humming.' 
   },
   [SoilState.DEPLETED]: { 
     icon: '🥀', 
-    label: 'DEPLETED (The Exhaustion)', 
+    label: 'DEPLETED', 
     color: '#95A5A6', 
-    guidance: 'Bone-deep weariness, compassion fatigue. Radical rest (72 hrs minimum). Ask for help.' 
+    guidance: 'Exhaustion. Radical rest, 72h minimum.' 
   },
   [SoilState.NUTRIENT_DENSE]: { 
     icon: '🌿', 
-    label: 'NUTRIENT-DENSE (The Soft State)', 
+    label: 'NUTRIENT-DENSE', 
     color: '#F1C40F', 
-    guidance: 'Clarity, presence, flow, \'I have enough time\'. Maintain through your 8 Pillars. You\'re in flow.' 
+    guidance: 'Presence, flow. You have enough time.' 
   },
 };
 
@@ -65,48 +65,52 @@ export const ARCHETYPE_DETAILS = {
   [Archetype.MAIDEN]: {
     label: 'MAIDEN / Follicular',
     season: 'Spring',
-    energy: 'Rising, expansive, learning',
-    superpower: 'Mental clarity, can hold complex concepts',
-    focus: 'Build, learn, create content, strategize',
-    gradient: 'from-green-900/40 to-pink-900/40',
+    energy: 'Rising',
+    superpower: 'Mental clarity',
+    focus: 'Build, learn, strategize',
+    gradient: 'from-[#A8B5A2]/40 to-[#D4A5A5]/20',
     icon: '🌱'
   },
   [Archetype.MOTHER]: {
     label: 'MOTHER / Ovulation',
     season: 'Summer',
-    energy: 'Peak, magnetic, radiant',
-    superpower: 'You\'re irresistible without trying',
-    focus: 'Launch, go live, record videos, network, sales',
-    gradient: 'from-amber-700/40 to-orange-900/40',
+    energy: 'Peak',
+    superpower: 'Magnetic radiance',
+    focus: 'Launch, sales, networking',
+    gradient: 'from-[#D4AF37]/30 to-[#D4A5A5]/30',
     icon: '☀️'
   },
   [Archetype.WILD_WOMAN]: {
     label: 'WILD WOMAN / Luteal',
     season: 'Autumn',
-    energy: 'Descending, discerning, truth-telling',
-    superpower: 'BS detector is HIGH, you see what\'s not working',
-    focus: 'Edit, refine, organize, admin, set boundaries',
-    gradient: 'from-orange-900/40 to-stone-900/40',
+    energy: 'Descending',
+    superpower: 'BS Detection',
+    focus: 'Edit, refine, boundaries',
+    gradient: 'from-[#D4A5A5]/40 to-[#4A5D4E]/30',
     icon: '🍂'
   },
   [Archetype.WISE_WOMAN]: {
     label: 'WISE WOMAN / Menstrual',
     season: 'Winter',
-    energy: 'Lowest, intuitive, psychic, rest',
-    superpower: 'The veil is thin, your intuition is a GPS',
-    focus: 'Vision, journal, receive, REST',
-    gradient: 'from-purple-900/40 to-indigo-950/40',
+    energy: 'Intuitive',
+    superpower: 'Deep Vision',
+    focus: 'Journal, receive, rest',
+    gradient: 'from-[#4A5D4E]/40 to-[#2C3E50]/40',
     icon: '🌑'
   }
 };
 
 export const DEFAULT_PILLARS = [
-  'Nervous System Regulation',
-  'Movement',
-  'Journaling',
-  'Boundaries',
-  'Rest',
-  'Nourishment',
-  'Spiritual Connection',
-  'Mindset & Abundance'
+  'Nervous System', 'Movement', 'Journaling', 'Boundaries', 'Rest', 'Nourishment', 'Ritual', 'Mindset'
+];
+
+export const DEFAULT_SOMATIC: SomaticPractice[] = [
+  { id: '1', name: 'Somatic Shaking', description: 'Release stagnant energy by shaking the limbs.', phases: [Archetype.WILD_WOMAN, Archetype.WISE_WOMAN], duration: 5 },
+  { id: '2', name: 'Visual Meditation', description: 'Visualize your next launch.', phases: [Archetype.MAIDEN], duration: 15 },
+  { id: '3', name: 'Mirror Work', description: 'Gaze at your radiance.', phases: [Archetype.MOTHER], duration: 10 }
+];
+
+export const DEFAULT_HERBAL: HerbalProtocol[] = [
+  { id: '1', name: 'Adrenal Support', herb: 'Ashwagandha', purpose: 'Calm the FLOODED state', phases: [Archetype.WILD_WOMAN], soilStates: [SoilState.FLOODED] },
+  { id: '2', name: 'Mineral Richness', herb: 'Nettle & Oatstraw', purpose: 'Remineralize PARCHED soil', phases: [Archetype.MAIDEN], soilStates: [SoilState.PARCHED] }
 ];

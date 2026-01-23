@@ -15,6 +15,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     e.preventDefault();
     // Mock authentication: In a real app, verify credentials.
     // For now, check if user exists in local storage by email or just create new.
+    // Fixed mockUser to match User interface in types.ts
     const mockUser: User = {
       id: Math.random().toString(36).substr(2, 9),
       name: email.split('@')[0],
@@ -30,9 +31,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       dailyCheckIns: [],
       pillarCompletions: {},
       tasks: [],
+      // Removed non-existent contentDrafts and added missing fields
+      somaticPractices: [],
+      herbalProtocols: [],
+      contentCalendar: [],
+      products: [],
+      services: [],
       journalEntries: [],
       savedGuidance: [],
-      contentDrafts: [],
       businessMetrics: {
         currentCycleRevenue: 0,
         activeProjects: 0,

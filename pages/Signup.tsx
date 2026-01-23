@@ -14,6 +14,7 @@ const Signup: React.FC<SignupProps> = ({ onSignup }) => {
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
+    // Fixed newUser to match User interface in types.ts
     const newUser: User = {
       id: Math.random().toString(36).substr(2, 9),
       name,
@@ -29,9 +30,14 @@ const Signup: React.FC<SignupProps> = ({ onSignup }) => {
       dailyCheckIns: [],
       pillarCompletions: {},
       tasks: [],
+      // Removed non-existent contentDrafts and added missing fields
+      somaticPractices: [],
+      herbalProtocols: [],
+      contentCalendar: [],
+      products: [],
+      services: [],
       journalEntries: [],
       savedGuidance: [],
-      contentDrafts: [],
       businessMetrics: {
         currentCycleRevenue: 0,
         activeProjects: 0,

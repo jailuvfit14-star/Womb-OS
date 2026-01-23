@@ -14,21 +14,47 @@ export enum Archetype {
   WISE_WOMAN = 'THE WISE_WOMAN'
 }
 
-export interface RootWound {
+export interface SomaticPractice {
   id: string;
   name: string;
   description: string;
-  affirmation: string;
-  startDate: string;
+  phases: Archetype[];
+  duration: number; // minutes
 }
 
-export interface DailyCheckIn {
-  date: string;
-  soilState: SoilState;
-  energyLevel: number;
-  notes?: string;
-  cycleDay: number;
+export interface HerbalProtocol {
+  id: string;
+  name: string;
+  herb: string;
+  purpose: string;
+  phases: Archetype[];
+  soilStates: SoilState[];
+}
+
+export interface ContentItem {
+  id: string;
+  title: string;
+  platform: 'Instagram' | 'TikTok' | 'Email' | 'Pinterest' | 'LinkedIn';
+  scheduledDate: string;
+  status: 'Idea' | 'Drafting' | 'Scheduled' | 'Published';
   phase: Archetype;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  type: 'Digital' | 'Physical' | 'Course';
+  price: number;
+  status: 'In Development' | 'Active' | 'Retired';
+  launchDate?: string;
+}
+
+export interface Service {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  deliveryTime: string;
 }
 
 export interface Task {
@@ -42,6 +68,16 @@ export interface Task {
   createdDate: string;
 }
 
+export interface DailyCheckIn {
+  date: string;
+  soilState: SoilState;
+  energyLevel: number;
+  notes?: string;
+  cycleDay: number;
+  phase: Archetype;
+}
+
+// Added missing JournalEntry interface
 export interface JournalEntry {
   id: string;
   date: string;
@@ -49,24 +85,6 @@ export interface JournalEntry {
   cycleDay: number;
   phase: Archetype;
   soilState: SoilState;
-}
-
-export interface SavedGuidance {
-  id: string;
-  date: string;
-  prompt: string;
-  type: 'daily' | 'requested' | 'affirmation';
-  cycleDay: number;
-  phase: Archetype;
-}
-
-export interface ContentDraft {
-  id: string;
-  platform: string;
-  content: string;
-  phase: Archetype;
-  status: 'draft' | 'published';
-  createdDate: string;
 }
 
 export interface User {
@@ -79,14 +97,16 @@ export interface User {
     lastPeriodStart: string;
     cycleLength: number;
   };
-  activeRootWounds: string[]; // IDs of root wounds
+  activeRootWounds: string[];
   pillarNames: string[];
   dailyCheckIns: DailyCheckIn[];
-  pillarCompletions: Record<string, boolean[]>; // date string key
+  pillarCompletions: Record<string, boolean[]>;
   tasks: Task[];
-  journalEntries: JournalEntry[];
-  savedGuidance: SavedGuidance[];
-  contentDrafts: ContentDraft[];
+  somaticPractices: SomaticPractice[];
+  herbalProtocols: HerbalProtocol[];
+  contentCalendar: ContentItem[];
+  products: Product[];
+  services: Service[];
   businessMetrics: {
     currentCycleRevenue: number;
     activeProjects: number;
@@ -98,4 +118,7 @@ export interface User {
     phaseShifts: boolean;
     pillarReminders: boolean;
   };
+  // Updated journalEntries to use JournalEntry interface
+  journalEntries: JournalEntry[];
+  savedGuidance: any[];
 }
